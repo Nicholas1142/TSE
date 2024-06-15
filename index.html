@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Complaint System</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <div class="container">
+        <header>
+            <h1>Welcome, User</h1>
+        </header>
+        <main>
+            <h2>Register a Complaint</h2>
+            <form id="complaintForm" method="post">
+                <div class="form-group">
+                    <label for="description">Description</label>
+                    <textarea id="description" name="description" rows="4" required></textarea>
+                </div>
+                <button type="submit">Submit Complaint</button>
+            </form>
+        </main>
+    </div>
+    <script>
+        document.getElementById('complaintForm').addEventListener('submit', function(event) {
+            event.preventDefault();
+            const description = document.getElementById('description').value;
+            fetch('/submit_complaint', {
+                method: 'POST',
+                headers: {
+                    'Content-Type': 'application/json',
+                },
+                body: JSON.stringify({ description }),
+            })
+            .then(response => response.json())
+            .then(data => {
+                if (data.success) {
+                    alert('Complaint submitted successfully!');
+                    document.getElementById('description').value = '';
+                } else {
+                    alert('Failed to submit complaint.');
+                }
+            })
+            .catch(error => {
+                console.error('Error:', error);
+                alert('Error submitting complaint.');
+            });
+        });
+    </script>
+</body>
+</html>
