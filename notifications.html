@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Notifications</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <header class="header-bar">
+        <div class="header-left">Complaint System</div>
+        <div class="header-right">
+            <a href="index.html">Back to Home</a>
+        </div>
+    </header>
+    <div class="container">
+        <header>
+            <h1>Notifications</h1>
+        </header>
+        <main>
+            <h2>Your Complaints and Admin Replies</h2>
+            <ul id="notificationList"></ul>
+        </main>
+    </div>
+    <script>
+        function loadNotifications() {
+            fetch('/api/notifications')
+            .then(response => response.json())
+            .then(data => {
+                const notificationList = document.getElementById('notificationList');
+                notificationList.innerHTML = '';
+                data.forEach(notification => {
+                    const li = document.createElement('li');
+                    li.innerHTML = `<strong>Complaint:</strong> ${notification.description}<br><strong>Reply:</strong> ${notification.reply}`;
+                    notificationList.appendChild(li);
+                });
+            });
+        }
+
+        loadNotifications();
+    </script>
+</body>
+</html>
