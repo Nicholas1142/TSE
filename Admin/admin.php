@@ -48,7 +48,7 @@ $result = $connect->query($sql);
                         echo "<td>" . $row["comp_title"] . "</td>";
                         echo "<td>" . $row["status"] . "</td>";
                         echo "<td>" . $row["assign"] . "</td>";
-                        echo "<td><a href='Response.html' class='action-btn'>Response</a></td>";
+                        echo "<td><a href='Response.php' class='action-btn'>Response</a></td>";
                         echo "</tr>";
                     }
                 } else {
