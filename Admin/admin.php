@@ -4,7 +4,7 @@ include("../connect.php");
 
 // Fetch data from database
 $sql = "SELECT comp_id, Username, Email, comp_title  FROM comp";
-$result = $conn->query($sql);
+$result = $connect->query($sql);
 ?>
 
 <!DOCTYPE html>
@@ -54,7 +54,7 @@ $result = $conn->query($sql);
                 } else {
                     echo "<tr><td colspan='7'>No complaints found</td></tr>";
                 }
-                $conn->close();
+                $connect->close();
                 ?>
             </tbody>
         </table>
