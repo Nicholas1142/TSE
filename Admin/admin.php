@@ -3,8 +3,13 @@
 include("../connect.php");
 
 // Fetch data from database
-$sql = "SELECT comp_id, uid, username, email, comp_title, comp_status, assign_to FROM comp";
+/*
+$sql = "SELECT comp_id, uid, email, comp_title, comp_status, assign_to FROM comp";
 $result = $connect->query($sql);
+*/
+
+$result = mysqli_query($connect, "select * from comp 
+join users on comp.uid = users.id");
 ?>
 
 <!DOCTYPE html>
