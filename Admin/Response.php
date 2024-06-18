@@ -31,8 +31,10 @@
                 </select>
                 <br><br>
             </div>
-                
+            <div>
                 <button type="submit" class="action-btn">Submit </button>
+                <a href="admin.php"><button type="button" class="btn btn-primary"name="backbtn">Back</button></a>
+            </div>
             </form>
         </div>
     </div>
