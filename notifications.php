@@ -1,19 +1,9 @@
 <?php
-$servername = "localhost";
-$username = "root";
-$password = "";
-$dbname = "admin";
+include "connect.php";
 
-// Create connection
-$conn = new mysqli($servername, $username, $password, $dbname);
-
-// Check connection
-if ($conn->connect_error) {
-    die("Connection failed: " . $conn->connect_error);
-}
 
 $sql = "SELECT title, complain FROM complaints";
-$result = $conn->query($sql);
+$result = $connect->query($sql);
 ?>
 
 <!DOCTYPE html>
@@ -22,7 +12,7 @@ $result = $conn->query($sql);
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Notifications</title>
-    <link rel="stylesheet" href="style.css">
+    <link rel="stylesheet" href="CSS/style.css">
 </head>
 <body>
     <header class="header-bar">
@@ -45,7 +35,7 @@ $result = $conn->query($sql);
                 } else {
                     echo "0 results";
                 }
-                $conn->close();
+                $connect->close();
                 ?>
             </ul>
         </main>

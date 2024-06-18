@@ -1,17 +1,6 @@
 <?php
-// Database connection details
-$servername = "localhost";
-$username = "root"; // Change this if you use a different username
-$password = "";     // Change this if you use a different password
-$dbname = "complain";
+include "connect.php";
 
-// Create connection
-$conn = new mysqli($servername, $username, $password, $dbname);
-
-// Check connection
-if ($conn->connect_error) {
-    die("Connection failed: " . $conn->connect_error);
-}
 
 if ($_SERVER['REQUEST_METHOD'] == 'POST') {
     $username = $_POST['username'];
@@ -19,7 +8,7 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
     $password = password_hash($_POST['password'], PASSWORD_DEFAULT);
 
     // Prepare SQL statement to prevent SQL injection
-    $stmt = $conn->prepare("INSERT INTO users (username, email, password) VALUES (?, ?, ?)");
+    $stmt = $connect->prepare("INSERT INTO users (username, email, password) VALUES (?, ?, ?)");
     $stmt->bind_param("sss", $username, $email, $password);
 
     if ($stmt->execute()) {
@@ -34,7 +23,7 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
     $stmt->close();
 }
 
-$conn->close();
+$connect->close();
 ?>
 <!DOCTYPE html>
 <html lang="en">
