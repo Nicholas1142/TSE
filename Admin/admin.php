@@ -1,17 +1,6 @@
 <?php
 // Database connection
-$servername = "localhost";
-$username = "root";
-$password = "";
-$dbname = "tse"; // Correct database name
-
-// Create connection
-$conn = new mysqli($servername, $username, $password, $dbname);
-
-// Check connection
-if ($conn->connect_error) {
-    die("Connection failed: " . $conn->connect_error);
-}
+include("connect.php");
 
 // Fetch data from database
 $sql = "SELECT comp_id, Username, Email, comp_title  FROM comp";
