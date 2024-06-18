@@ -15,7 +15,7 @@
     <div class="success-message">
         <h2>Submit Successful!</h2>
         <p>Your complaint has been submitted successfully.</p>
-        <a href="admin.html">Go Back to Home</a>
+        <a href="admin.php">Go Back to Home</a>
     </div>
 </body>
 </html>
