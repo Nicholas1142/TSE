@@ -1,6 +1,6 @@
 <?php
 // Database connection
-include("./connect.php");
+include("../connect.php");
 
 // Fetch data from database
 $sql = "SELECT comp_id, Username, Email, comp_title  FROM comp";
