@@ -67,8 +67,8 @@ label {
     margin-bottom: 5px;
 }
 
-textarea {
-    width: 95%;
+input[type="text"], textarea {
+    width: 100%;
     padding: 10px;
     border: 1px solid #ced4da;
     border-radius: 4px;
@@ -134,16 +134,9 @@ li {
     to { bottom: 0; opacity: 0; }
 }
 
-/* Additional styles for the Thank You page */
-#countdown {
-    font-weight: bold;
-    color: #007bff;
-}
-
-/* Style for the success message on the Thank You page */
+/* Additional styles for the thank you page */
 .thank-you-message {
     font-size: 1.5em;
-    font-weight: bold;
     color: #28a745;
     text-align: center;
     margin: 20px 0;
