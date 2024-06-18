@@ -1,11 +1,10 @@
-
 <!DOCTYPE html>
 <html lang="en">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Thank You</title>
-    <link rel="stylesheet" href="newcomp.css">
+    <link rel="stylesheet" href="style.css">
 </head>
 <body>
     <div class="container">
@@ -14,19 +13,19 @@
         </header>
         <main>
             <p class="thank-you-message">Your complaint has been submitted successfully.</p>
-            <p>You will be redirected to the main page in <span id="countdown">5</span> seconds.</p>
+            <p>You will be redirected to the home page in <span id="countdown">10</span> seconds.</p>
         </main>
     </div>
     <script>
-        let countdown = 5;
+        let countdown = 10;
         const countdownElement = document.getElementById('countdown');
 
-        const countdownInterval = setInterval(() => {
+        const interval = setInterval(() => {
             countdown--;
             countdownElement.textContent = countdown;
             if (countdown === 0) {
-                clearInterval(countdownInterval);
-                window.location.href = 'newcomp.html';
+                clearInterval(interval);
+                window.location.href = 'index.html';
             }
         }, 1000);
     </script>
