@@ -3,7 +3,7 @@
 $dbservername="localhost";
 $dbusername="root";
 $dbpassword="";
-$dbname="tse";
+$dbname="complain";
 $connect=mysqli_connect($dbservername, $dbusername, $dbpassword, $dbname);
 
 
