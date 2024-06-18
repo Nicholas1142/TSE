@@ -3,7 +3,7 @@
 include("../connect.php");
 
 // Fetch data from database
-$sql = "SELECT comp_id, Username, Email, comp_title FROM comp";
+$sql = "SELECT comp_id, uid, username, email, comp_title, comp_status, assign_to FROM comp";
 $result = $connect->query($sql);
 ?>
 
@@ -33,7 +33,7 @@ $result = $connect->query($sql);
                     <th>Email</th>
                     <th>Complain title</th>
                     <th>Status</th>
-                    <th>Assign</th>
+                    <th>Assign to</th>
                     <th>Action</th>
                 </tr>
             </thead>
@@ -41,15 +41,17 @@ $result = $connect->query($sql);
                 <?php
                 if ($result->num_rows > 0) {
                     while($row = $result->fetch_assoc()) {
-                        echo "<tr>";
-                        echo "<td>" . $row["comp_id"] . "</td>";
-                        echo "<td>" . $row["Username"] . "</td>";
-                        echo "<td>" . $row["Email"] . "</td>";
-                        echo "<td>" . $row["comp_title"] . "</td>";
-                        echo "<td>" . $row["status"] . "</td>";
-                        echo "<td>" . $row["assign"] . "</td>";
-                        echo "<td><a href='Response.php' class='action-btn'>Response</a></td>";
-                        echo "</tr>";
+                    ?>
+                        <tr>
+                            <td><?= $row['comp_id'] ?>
+                            <td><?= $row['username'] ?>
+                            <td><?php if(!empty($row['email'])) {echo $row['email'];} else {echo "-";}?>
+                            <td><?= $row['comp_title'] ?>
+                            <td><?= $row['comp_status'] ?>
+                            <td><?php if(!empty($row['assign_to'])) {echo $row['assign_to'];} else {echo "-";}?>
+                            <td><a class='action-btn' href="Response.php?cid=<?php echo $row['comp_id'];?>">Response</a></td>
+                        </tr>
+                    <?php
                     }
                 } else {
                     echo "<tr><td colspan='7'>No complaints found</td></tr>";

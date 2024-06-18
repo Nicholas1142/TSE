@@ -1,3 +1,15 @@
+<?php
+// Database connection
+include("../connect.php");
+
+$result = mysqli_query($connect, "select * from comp 
+join users on comp.uid = users.id
+where comp_id = '".$_GET['cid']."' ");
+
+if(mysqli_num_rows($result)!=0)
+$row = mysqli_fetch_assoc($result);
+?>
+
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -17,24 +29,37 @@
         <div class="Complain-detail">
             <form id="complaintForm">
                 <h3>Complain title:</h3>
-                <h5>Username:</h5>
-                <h5>Email:</h5>
-                <h5>Complain details:</h5>
-                <textarea id="description" name="description" cols="60" rows="10" required></textarea>
-            <div class="dropdown">
-                <label for="worker">worker:</label>
-                <select name="worker" id="worker">
-                  <option value="Manager">Manager</option>
-                  <option value="Staff">Staff</option>
-                  <option value="Supervisor">Supervisor</option>
-                 
-                </select>
-                <br><br>
-            </div>
-            <div>
-                <button type="submit" class="action-btn">Submit </button>
-                <a href="admin.php"><button type="button" class="btn btn-primary"name="backbtn">Back</button></a>
-            </div>
+                <div>
+                    <label for="username"><h5>User Name:<?=$row['username']?></h5></label>
+                </div>
+
+                <div>
+                    <h5>Email:<?=$row['email']?></h5>
+                </div>
+
+                <div>
+                    <h5>Complain details: <?=$row['comp_details']?></h5>
+                </div>
+
+                <div>
+                    <h5>Response:</h5>
+                    <textarea id="description" name="description" cols="60" rows="10" required></textarea>
+                    
+                    <div class="dropdown">
+                        <label for="worker">Assign to:</label>
+                        <select name="worker" id="worker">
+                            <option value="Manager">Manager</option>
+                            <option value="Staff">Staff</option>
+                            <option value="Supervisor">Supervisor</option>
+                        </select>
+                        <br><br>
+                    </div>
+                </div>
+
+                <div>
+                    <button type="submit" class="action-btn">Submit </button>
+                    <a href="admin.php"><button type="button" class="btn btn-primary"name="backbtn">Back</button></a>
+                </div>
             </form>
         </div>
     </div>
