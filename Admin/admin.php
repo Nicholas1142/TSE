@@ -3,7 +3,7 @@
 include("../connect.php");
 
 // Fetch data from database
-$sql = "SELECT comp_id, Username, Email, comp_title  FROM comp";
+$sql = "SELECT comp_id, Username, Email, comp_title FROM comp";
 $result = $connect->query($sql);
 ?>
 
