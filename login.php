@@ -1,25 +1,13 @@
 <?php
 session_start();
-// Assuming you are using MySQL
-$host = "localhost";
-$username = "root";
-$password = "";
-$database = "complain";
-
-// Establish a connection to the database
-$conn = new mysqli($host, $username, $password, $database);
-
-// Check connection
-if ($conn->connect_error) {
-    die("Connection failed: " . $conn->connect_error);
-}
+include "connect.php";
 
 if ($_SERVER['REQUEST_METHOD'] == 'POST') {
     $email = $_POST['email'];
     $password = $_POST['password'];
 
     // Prepare SQL statement to prevent SQL injection
-    $stmt = $conn->prepare("SELECT * FROM users WHERE email = ?");
+    $stmt = $connect->prepare("SELECT * FROM users WHERE email = ?");
     $stmt->bind_param("s", $email);
     $stmt->execute();
     $result = $stmt->get_result();
@@ -43,7 +31,7 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
     $stmt->close();
 }
 
-$conn->close();
+$connect->close();
 ?>
 
 <!DOCTYPE html>
@@ -55,7 +43,7 @@ $conn->close();
   <title>Login Page</title>
   <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css">
-  <link rel="stylesheet" href="login.css">
+  <link rel="stylesheet" href="CSS/login.css">
 </head>
 <body>
   <main>
