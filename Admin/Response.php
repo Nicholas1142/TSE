@@ -21,7 +21,7 @@ $row = mysqli_fetch_assoc($result);
 </head>
 <body>
     <div class="header">
-        <h1 class="admin-title">Admin</h1>
+        <h1 class="admin-title">Admin Dashboard</h1>
         <a href="" class="logout-btn">Logout</a>
     </div>
 
