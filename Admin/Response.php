@@ -85,7 +85,7 @@ $row = mysqli_fetch_assoc($result);
             .then(data => {
                 if (data.success) {
                     document.getElementById('description').value = '';
-                    window.location.href = 'Response.html';
+                    window.location.href = 'Response.php';
                 } else {
                     alert('Failed to Response.');
                 }
