@@ -67,7 +67,14 @@ label {
     margin-bottom: 5px;
 }
 
-input[type="text"], textarea {
+input[type="text"] {
+    width: 50%;  /* Adjusted width for title input box */
+    padding: 10px;
+    border: 1px solid #ced4da;
+    border-radius: 4px;
+}
+
+textarea {
     width: 100%;
     padding: 10px;
     border: 1px solid #ced4da;
