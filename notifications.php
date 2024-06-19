@@ -1,7 +1,7 @@
 <?php
 include "connect.php";
 
-$sql = "SELECT comp_id, comp_title, comp_details FROM comp";
+$sql = "SELECT comp_id, comp_title, comp_details, comp_status FROM comp";
 $result = $connect->query($sql);
 ?>
 
@@ -12,6 +12,7 @@ $result = $connect->query($sql);
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Notifications</title>
     <link rel="stylesheet" href="style.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css">
 </head>
 <body>
     <header class="header-bar">
@@ -28,9 +29,10 @@ $result = $connect->query($sql);
             <table>
                 <thead>
                     <tr>
-                        <th>Complaint ID</th>
+                        <th>ID</th>
                         <th>Title</th>
                         <th>Details</th>
+                        <th>Status</th>
                     </tr>
                 </thead>
                 <tbody>
@@ -41,10 +43,17 @@ $result = $connect->query($sql);
                             echo "<td>" . $row["comp_id"] . "</td>";
                             echo "<td>" . $row["comp_title"] . "</td>";
                             echo "<td>" . $row["comp_details"] . "</td>";
+                            echo "<td>";
+                            if($row['comp_status'] == "1") {
+                                echo "<span class='badge bg-label-success me-1'>Close case</span>";
+                            } elseif($row['comp_status'] == "0") {
+                                echo "<span class='badge bg-label-info me-1'>Unread</span>";
+                            }
+                            echo "</td>";
                             echo "</tr>";
                         }
                     } else {
-                        echo "<tr><td colspan='3'>No complaints found.</td></tr>";
+                        echo "<tr><td colspan='4'>No results</td></tr>";
                     }
                     $connect->close();
                     ?>
