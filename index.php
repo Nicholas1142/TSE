@@ -5,10 +5,10 @@ $success = false;
 $error = false;
 
 if ($_SERVER["REQUEST_METHOD"] == "POST") {
-    $title = $_POST['title'];
+    $title = $_POST['comp_title'];
     $description = $_POST['description'];
 
-    $sql = "INSERT INTO admin (title, complain) VALUES ('$title', '$description')";
+    $sql = "INSERT INTO comp (comp_title, comp_details) VALUES ('$title', '$description')";
 
     if ($connect->query($sql) === TRUE) {
         $success = true;
