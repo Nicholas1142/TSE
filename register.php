@@ -33,7 +33,7 @@ $connect->close();
     <title>Register</title>
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css">
-    <link rel="stylesheet" href="CSS/register.css">
+    <link rel="stylesheet" href="register1.css">
 </head>
 <body>
   <main>
@@ -41,7 +41,7 @@ $connect->close();
       <form method="POST" action="register.php">
         <div class="con">
           <header class="head-form">
-            <h2>Register</h2>
+            <h2>Registration</h2>
           </header>
           <br>
           <div class="field-set">
@@ -66,7 +66,7 @@ $connect->close();
               <i class="fa fa-eye" aria-hidden="true" type="button" id="eye"></i>
             </span>
             <br>
-            <button class="register" type="submit"> Register </button>
+            <button class="register" style = "width : 50%; margin-left : 25%; border-radius: 7px 20px 7px 20px;" type="submit"> Register </button>
           </div>
         </div>
       </form>

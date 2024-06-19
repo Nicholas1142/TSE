@@ -7,12 +7,7 @@
 }
 
  body {
-<<<<<<<< HEAD:register1.css
 	 background-image: linear-gradient(to top, #eb9086 0%, #e9f4a6 100%);
-========
-	 background-image: linear-gradient(-225deg, #e3fdf5 0%, #ffe6fa 100%);
-	 background-image: linear-gradient(to top, #a8edea 0%, #fed6e3 100%);
->>>>>>>> cf8a6183a70f6de3279dad2a8eb5f6f8c1811ac8:CSS/register.css
 	 background-attachment: fixed;
 	 background-repeat: no-repeat;
 	 font-family: 'Vibur', cursive;
@@ -27,17 +22,10 @@
 	 min-height: 500px;
 	 height: auto;
 	 border-radius: 5px;
-<<<<<<<< HEAD:register1.css
 	 margin: 5% auto;
 	 box-shadow: 0 9px 50px rgba(234, 177, 149, 0.31);
 	 padding: 2%;
 	 background-image: linear-gradient(-225deg, #ececf7 50%, #eef4de 50%);
-========
-	 margin: 2% auto;
-	 box-shadow: 0 9px 50px rgba(234, 177, 149, 0.31);
-	 padding: 2%;
-	 background-image: linear-gradient(-225deg, #e3fdf5 50%, #ffe6fa 50%);
->>>>>>>> cf8a6183a70f6de3279dad2a8eb5f6f8c1811ac8:CSS/register.css
 }
 /* form Container */
  form .con {
@@ -69,32 +57,18 @@
  .input-item {
 	 background: #fff;
 	 color: #333;
-<<<<<<<< HEAD:register1.css
 	 padding: 14.5px 20px 15px 9px;
-========
-	 padding: 14.5px 0px 15px 9px;
->>>>>>>> cf8a6183a70f6de3279dad2a8eb5f6f8c1811ac8:CSS/register.css
 	 border-radius: 5px 0px 0px 5px;
 }
 /* Show/hide password Font Icon */
  #eye {
 	 background: #fff;
 	 color: #333;
-<<<<<<<< HEAD:register1.css
 	 margin-left: -27px;
 	 padding: 15px 9px 9px 0px;
 	 border-radius: 0px px 3px 0px;
 	 position: relative;
 	 right: 3%;
-========
-	 margin: 5.9px 0 0 0;
-	 margin-left: -20px;
-	 padding: 15px 9px 19px 0px;
-	 border-radius: 0px 5px 5px 0px;
-	 float: right;
-	 position: relative;
-	 right: 1%;
->>>>>>>> cf8a6183a70f6de3279dad2a8eb5f6f8c1811ac8:CSS/register.css
 	 top: -0.2%;
 	 z-index: 5;
 	 cursor: pointer;
@@ -121,15 +95,6 @@
 	 transform: translateX(-2px);
 	 border-radius: 5px;
 }
-<<<<<<<< HEAD:register1.css
-========
-/* //////////////////////////////////////////// */
-/* //////////////////////////////////////////// */
-/* input[type="text"] {
-	min-width: 250px;
-}
- */
->>>>>>>> cf8a6183a70f6de3279dad2a8eb5f6f8c1811ac8:CSS/register.css
 /* buttons */
  button {
 	 display: inline-block;
@@ -149,27 +114,11 @@
 }
 /* Submits */
  .submits {
-<<<<<<<< HEAD:register1.css
 	 width: 100%;
 	 display: inline-block;
 	 margin-left: 2%;
 }
 
-========
-	 width: 48%;
-	 display: inline-block;
-	 float: left;
-	 margin-left: 2%;
-}
-/* Forgot Password button FAF3DD */
- .frgt-pass {
-	 background: transparent;
-}
-/* Sign Up button */
- .sign-up {
-	 background: #b8f2e6;
-}
->>>>>>>> cf8a6183a70f6de3279dad2a8eb5f6f8c1811ac8:CSS/register.css
 /* buttons hover */
  button:hover {
 	 transform: translatey(3px);

@@ -20,7 +20,7 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
             // Successful login
             $_SESSION['user_id'] = $user['id'];
             $_SESSION['email'] = $user['email'];
-            header("Location: newcomp.html"); // Redirect to a welcome page
+            header("Location: thankyou.php"); // Redirect to a welcome page
             exit();
         } else {
             // Invalid username or password, show a pop-up alert
@@ -52,7 +52,6 @@ $connect->close();
         <div class="con">
           <header class="head-form">
             <h2>Log In</h2>
-            <p>Login here using your email and password</p>
           </header>
           <br>
           <div class="field-set">
@@ -69,10 +68,13 @@ $connect->close();
               <i class="fa fa-eye" aria-hidden="true" type="button" id="eye"></i>
             </span>
             <br>
-            <button class="log-in" type="submit"> Log In </button>
+            <button class="log-in" style = "width : 50%; margin-left : 25%; border-radius: 7px 20px 7px 20px;" type="submit"> Log In </button>
           </div>
           <div class="other">
-            <a class="btn submits frgt-pass" href="forgot.php">Forgot Password</a>
+            <a class="btn submits frgt-pass" href="adminlogin.php"> Admin Loginㅤ</a>
+          </div>
+          <div class="other">
+            <a class="btn submits frgt-pass" href="register.php"> Sign Upㅤ</a>
           </div>
         </div>
       </form>
