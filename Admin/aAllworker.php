@@ -32,6 +32,7 @@ $result = mysqli_query($connect, "select * from worker");
     <div class="list-complain">
         <header>
             <h2 class="small title">WORKER LIST</h2>
+            <a class='action-btn' href="aAddworker.php">Add Worker</a>
         </header>
         <table class="content-table">
             <thead>
@@ -50,9 +51,7 @@ $result = mysqli_query($connect, "select * from worker");
                         <tr>
                             <td><?= $row['wid'] ?></td>
                             <td><?= ucfirst($row['worker_position']) ?></td>
-                            <td><a class='action-btn' href="aEditworker.php?wid=<?php echo $row['wid'];?>">Edit</a>
-                            <a class='action-btn' href="aEditworker.php?wid=<?php echo $row['wid'];?>" onclick="return confirmation();">Delete</a></td>
-
+                            <td><a class='action-btn' href="aDelworker.php?wid=<?php echo $row['wid'];?>" onclick="return confirmation();">Delete</a></td>
                         </tr>
             </tbody>
             <?php

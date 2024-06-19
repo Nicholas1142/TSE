@@ -56,6 +56,8 @@ $result = mysqli_query($connect, "select * from comp");
                             <span class="badge bg-label-success me-1">Replied</span>
                             <?php elseif($row['comp_status'] == "0"):?>
                             <span class="badge bg-label-info me-1">Unread</span>
+                            <?php else:?>
+                            -
                             <?php endif;?></td>
                             
                             <?php
