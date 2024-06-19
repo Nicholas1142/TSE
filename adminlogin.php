@@ -73,6 +73,7 @@ $connect->close();
           <br>
           <button class="log-in" style = "width : 50%; margin-left : 25%; border-radius: 7px 20px 7px 20px;" type="submit"> Log In </button>
         </div>
+        <br>
         <div class="other">
           <a class="btn submits frgt-pass" href="login.php"> User Loginㅤ</a>
         </div>
