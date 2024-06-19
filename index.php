@@ -46,8 +46,8 @@ $connect->close();
             <h2>Register a Complaint</h2>
             <form id="complaintForm" method="post" action="">
                 <div class="form-group">
-                    <label for="title">Title</label>
-                    <input type="text" id="title" name="title" required>
+                    <label for="comp_title">Title</label>
+                    <input type="text" id="comp_title" name="comp_title" required>
                 </div>
                 <div class="form-group">
                     <label for="description">Description</label>
