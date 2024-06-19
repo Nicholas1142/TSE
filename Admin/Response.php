@@ -49,9 +49,9 @@ $row = mysqli_fetch_assoc($result);
                 <!--Assign to-->
                 
                 <h5>Assign To:</h5>
-                <div class="dropdown" style="padding-left: 13%">
+                <div class="dropdown">
                 <select name="worker" id="worker">
-                    
+
                         <?php 
                         $sql = mysqli_query($connect, "select * from comp join worker on worker.wid = comp.assign_to where comp_id = '".$_GET['cid']."' limit 1");
                         if(mysqli_num_rows($sql)!=0){
