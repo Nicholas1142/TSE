@@ -2,7 +2,7 @@
 include "connect.php";
 
 
-$sql = "SELECT title, complain FROM admin";
+$sql = "SELECT comp_title, comp_details FROM comp";
 $result = $connect->query($sql);
 ?>
 
@@ -12,7 +12,7 @@ $result = $connect->query($sql);
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Notifications</title>
-    <link rel="stylesheet" href="CSS/style.css">
+    <link rel="stylesheet" href="style.css">
 </head>
 <body>
     <header class="header-bar">
@@ -30,7 +30,7 @@ $result = $connect->query($sql);
                 <?php
                 if ($result->num_rows > 0) {
                     while($row = $result->fetch_assoc()) {
-                        echo "<li>" . $row["title"]. ": " . $row["complain"]. "</li>";
+                        echo "<li>" . $row["comp_title"]. ": " . $row["comp_details"]. "</li>";
                     }
                 } else {
                     echo "0 results";

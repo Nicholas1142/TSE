@@ -5,10 +5,10 @@ $success = false;
 $error = false;
 
 if ($_SERVER["REQUEST_METHOD"] == "POST") {
-    $title = $_POST['title'];
+    $title = $_POST['comp_title'];
     $description = $_POST['description'];
 
-    $sql = "INSERT INTO admin (title, complain) VALUES ('$title', '$description')";
+    $sql = "INSERT INTO comp (comp_title, comp_details) VALUES ('$title', '$description')";
 
     if ($connect->query($sql) === TRUE) {
         $success = true;
@@ -27,7 +27,7 @@ $connect->close();
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Complaint System</title>
-    <link rel="stylesheet" href="CSS/style.css">
+    <link rel="stylesheet" href="style.css">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css">
 </head>
 <body>
@@ -46,8 +46,8 @@ $connect->close();
             <h2>Register a Complaint</h2>
             <form id="complaintForm" method="post" action="">
                 <div class="form-group">
-                    <label for="title">Title</label>
-                    <input type="text" id="title" name="title" required>
+                    <label for="comp_title">Title</label>
+                    <input type="text" id="comp_title" name="comp_title" required>
                 </div>
                 <div class="form-group">
                     <label for="description">Description</label>

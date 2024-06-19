@@ -7,9 +7,7 @@ include("../connect.php");
 $sql = "SELECT comp_id, uid, email, comp_title, comp_status, assign_to FROM comp";
 $result = $connect->query($sql);
 */
-
-$result = mysqli_query($connect, "select * from comp 
-join users on comp.uid = users.id");
+$result = mysqli_query($connect, "select * from comp");
 ?>
 
 <!DOCTYPE html>
@@ -42,28 +40,46 @@ join users on comp.uid = users.id");
                     <th>Action</th>
                 </tr>
             </thead>
-            <tbody>
-                <?php
-                if ($result->num_rows > 0) {
+
+            <?php
+                if(mysqli_num_rows($result)>0) {
                     while($row = $result->fetch_assoc()) {
                     ?>
+            <tbody>
                         <tr>
-                            <td><?= $row['comp_id'] ?>
-                            <td><?= $row['username'] ?>
-                            <td><?php if(!empty($row['email'])) {echo $row['email'];} else {echo "-";}?>
-                            <td><?= $row['comp_title'] ?>
-                            <td><?= $row['comp_status'] ?>
-                            <td><?php if(!empty($row['assign_to'])) {echo $row['assign_to'];} else {echo "-";}?>
+                            <td><?= $row['comp_id'] ?></td>
+                            <td><?= $row['uid'] ?></td>
+                            <td><?php if(!empty($row['email'])) {echo $row['email'];} 
+                                else {echo "-";}?></td>
+                            <td><?= $row['comp_title'] ?></td>
+                            <td><?php if($row['comp_status'] == "1"):?>
+                            <span class="badge bg-label-success me-1">Replied</span>
+                            <?php elseif($row['comp_status'] == "0"):?>
+                            <span class="badge bg-label-info me-1">Unread</span>
+                            <?php endif;?></td>
+                            
+                            <?php
+                            $result2 = mysqli_query($connect, "select * from worker where '".$row['assign_to']."' = wid");
+?>
+                            <td>
+                            <?php
+                            while($row2 = mysqli_fetch_assoc($result2)){
+                                if(!empty($row['assign_to']))
+                                    {echo ucfirst($row2['worker_position']);} 
+                                else {echo "-";}
+                                } ?>
+                            </td>
+                          
                             <td><a class='action-btn' href="Response.php?cid=<?php echo $row['comp_id'];?>">Response</a></td>
                         </tr>
-                    <?php
+            </tbody>
+            <?php
                     }
                 } else {
                     echo "<tr><td colspan='7'>No complaints found</td></tr>";
                 }
                 $connect->close();
                 ?>
-            </tbody>
         </table>
     </div>
 </body>
