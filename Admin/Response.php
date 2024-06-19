@@ -1,6 +1,7 @@
 <?php
 // Database connection
 include("../connect.php");
+session_start();
 
 $result = mysqli_query($connect, "select * from comp 
 join users on comp.uid = users.id
@@ -21,80 +22,80 @@ $row = mysqli_fetch_assoc($result);
 </head>
 <body>
     <div class="header">
-        <h1 class="admin-title">Admin Dashboard</h1>
+        <h1 class="admin-title">Admin</h1>
         <a href="" class="logout-btn">Logout</a>
     </div>
 
     <div class="container-Complain">
         <div class="Complain-detail">
-            <form id="complaintForm">
-                <h3>Complain title:</h3>
+            <form action="aRespondFunc.php?cid=<?=$row['comp_id'];?>" id="complaintForm" method="POST">                
+                <h3>Complain Title: <?= strtoupper($row['comp_title']);?></h3>
                 <div>
-                    <label for="username"><h5>User Name:<?=$row['username']?></h5></label>
+                    <label for="username"><h5>User Name: <?=$row['username']?></h5></label>
                 </div>
 
                 <div>
-                    <h5>Email:<?=$row['email']?></h5>
+                    <h5>Email: <?=$row['email']?></h5>
                 </div>
 
                 <div>
-                    <h5>Complain details: <?=$row['comp_details']?></h5>
+                    <h5>Complain Details: <?=$row['comp_details']?></h5>
                 </div>
 
                 <div>
                     <h5>Response:</h5>
                     <textarea id="description" name="description" cols="60" rows="10" required></textarea>
                     
-                    <div class="dropdown">
-                        <label for="worker">Assign to:</label>
-                        <select name="worker" id="worker">
-                            <option value="Manager">Manager</option>
-                            <option value="Staff">Staff</option>
-                            <option value="Supervisor">Supervisor</option>
-                        </select>
-                        <br><br>
-                    </div>
+                <!--Assign to-->
+                
+                <h5>Assign To:</h5>
+                <div class="dropdown" style="padding-left: 13%">
+                <select name="worker" id="worker">
+                        <?php 
+                        $sql = mysqli_query($connect, "select * from comp join worker on worker.wid = comp.assign_to where comp_id = '".$_GET['cid']."' limit 1");
+                        if(mysqli_num_rows($sql)!=0){
+                            while($row2 = mysqli_fetch_assoc($sql)){?>
+                        
+                            <option <?php if(isset($row['assign_to']))
+                            {?>value = "<?= $row['assign_to'];?>" <?php }
+                            else?>value="">
+                            <?php if(isset($row['assign_to'])){echo ucfirst($row2['worker_position']);}?>
+                            </option>
+                            
+                            <?php
+                            $sql2 = mysqli_query($connect, "select * from worker");
+                            while($row3 = mysqli_fetch_assoc($sql2)){
+                                ?>
+                                <option value="<?=$row3['wid']?>"><?= ucfirst($row3['worker_position']);?></option>
+                            <?php
+                                }
+                            }
+                        }
+                        else{
+                        $sql2 = mysqli_query($connect, "select * from worker");?>
+                        <option value="">--Assign to Worker--</option>
+                        <?php
+                            while($row3 = mysqli_fetch_assoc($sql2)){
+                            ?>
+                            <option value="<?=$row3['wid']?>"><?= ucfirst($row3['worker_position']);?></option>
+                            <?php
+                            }
+                        }
+                        ?>
+                        </select> 
+                    <br><br>
+                </div>
+            
                 </div>
 
                 <div>
+                    <input type="hidden" name="cid" value="<?=$row['comp_id'];?>">
                     <button type="submit" class="action-btn">Submit </button>
                     <a href="admin.php"><button type="button" class="btn btn-primary"name="backbtn">Back</button></a>
                 </div>
             </form>
         </div>
     </div>
-    <script>
-        document.getElementById('complaintForm').addEventListener('submit', function(event) {
-            event.preventDefault();
 
-            const description = document.getElementById('description').value.trim();
-
-            if (description === "") {
-                alert('Please fill in the information.');
-                return;
-            }
-
-            fetch('/submit_complaint', {
-                method: 'POST',
-                headers: {
-                    'Content-Type': 'application/json',
-                },
-                body: JSON.stringify({ description }),
-            })
-            .then(response => response.json())
-            .then(data => {
-                if (data.success) {
-                    document.getElementById('description').value = '';
-                    window.location.href = 'Response.php';
-                } else {
-                    alert('Failed to Response.');
-                }
-            })
-            .catch(error => {
-                console.error('Error:', error);
-                alert('Error submitting complaint.');
-            });
-        });
-    </script>
 </body>
 </html>
