@@ -5,7 +5,7 @@ include "connect.php";
 $title = $_POST['title'];
 $description = $_POST['description'];
 
-$sql = "INSERT INTO complaints (title, complain) VALUES ('$title', '$description')";
+$sql = "INSERT INTO comp (comp_title, comp_details) VALUES ('$title', '$description')";
 
 
 if ($connect->query($sql) === TRUE) {
