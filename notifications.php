@@ -2,7 +2,7 @@
 include "connect.php";
 
 
-$sql = "SELECT title, complain FROM complaints";
+$sql = "SELECT title, complain FROM admin";
 $result = $connect->query($sql);
 ?>
 
@@ -18,7 +18,7 @@ $result = $connect->query($sql);
     <header class="header-bar">
         <div class="header-left">Complaint System</div>
         <div class="header-right">
-            <a href="index.html">Home</a>
+            <a href="index.php">Home</a>
         </div>
     </header>
     <div class="container">
