@@ -15,30 +15,33 @@ if ($conn->connect_error) {
 }
 
 if ($_SERVER['REQUEST_METHOD'] == 'POST') {
-    $email = $_POST['email'];
-    $password = $_POST['password'];
+    $admin_name = $_POST['admin_name'];
+    $pass = $_POST['pass'];
 
     // Prepare SQL statement to prevent SQL injection
-    $stmt = $conn->prepare("SELECT * FROM users WHERE email = ?");
-    $stmt->bind_param("s", $email);
+    $stmt = $conn->prepare("SELECT * FROM admin WHERE admin_name = ?");
+    $stmt->bind_param("s", $admin_name);
     $stmt->execute();
     $result = $stmt->get_result();
 
     // Check if user exists
     if ($result->num_rows > 0) {
-        $user = $result->fetch_assoc();
-        // Verify password
-        if (password_verify($password, $user['password'])) {
-            // Successful login
-            $_SESSION['user_id'] = $user['id'];
-            $_SESSION['email'] = $user['email'];
-            header("Location: newcomp.html"); // Redirect to a welcome page
-            exit();
-        } else {
+      $user = $result->fetch_assoc();
+      // Verify password
+      if (password_verify($pass, $user['pass'])) {
+          // Successful login
+          $_SESSION['admin_id'] = $user['admin_id'];
+          $_SESSION['admin_name'] = $user['admin_name'];
+          header("Location: admin.html"); // Redirect to a welcome page
+          exit();
+      } else {
+          // Invalid username or password, show a pop-up alert
+          echo "<script>alert('Invalid password!');</script>";
+        }
+  }  else {
             // Invalid username or password, show a pop-up alert
-            echo "<script>alert('Invalid email or password!');</script>";
+            echo "<script>alert('Invalid Admin name!');</script>";
           }
-    } 
 
     $stmt->close();
 }
@@ -60,31 +63,30 @@ $conn->close();
 <body>
   <main>
     <div class="overlay">
-      <form method="POST" action="login.php">
+      <form method="POST" action="adminlogin.php">
         <div class="con">
           <header class="head-form">
             <h2>Admin Log In</h2>
-            <p>Login here using your email and password</p>
           </header>
           <br>
           <div class="field-set">
             <span class="input-item">
               <i class="fa fa-user-circle"></i>
             </span>
-            <input class="form-input" id="usname" type="text" placeholder="@Email" name="email" required>
+            <input class="form-input" id="usname" type="text" placeholder="Admin Name" name="admin_name" required>
             <br>
             <span class="input-item">
               <i class="fa fa-key"></i>
             </span>
-            <input class="form-input" type="password" placeholder="Password" name="password" id="pwd" required>
+            <input class="form-input" type="password" placeholder="Password" name="pass" id="pwd" required>
             <span>
               <i class="fa fa-eye" aria-hidden="true" type="button" id="eye"></i>
             </span>
             <br>
-            <button class="log-in" type="submit"> Log In </button>
+            <button class="log-in" style = "width : 50%; margin-left : 25%; border-radius: 7px 20px 7px 20px;" type="submit"> Log In </button>
           </div>
           <div class="other">
-            <a class="btn submits frgt-pass" href="forgot.php">Forgot Password</a>
+            <a class="btn submits frgt-pass" href="login.php"> User Loginㅤ</a>
           </div>
         </div>
       </form>
