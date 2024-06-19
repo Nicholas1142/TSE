@@ -7,6 +7,7 @@ $description = $_POST['description'];
 
 $sql = "INSERT INTO complaints (title, complain) VALUES ('$title', '$description')";
 
+
 if ($connect->query($sql) === TRUE) {
     echo json_encode(array('success' => true));
     header('Location: thankyou.php');
