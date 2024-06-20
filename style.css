@@ -95,6 +95,34 @@ button:hover {
     background-color: #0056b3;
 }
 
+table {
+    width: 100%;
+    border-collapse: collapse;
+    margin-top: 20px;
+}
+
+table, th, td {
+    border: 1px solid #ddd;
+}
+
+th, td {
+    padding: 8px;
+    text-align: left;
+}
+
+th {
+    background-color: #007bff;
+    color: white;
+}
+
+tr:nth-child(even) {
+    background-color: #f2f2f2;
+}
+
+tr:hover {
+    background-color: #ddd;
+}
+
 ul {
     list-style-type: none;
     padding: 0;
@@ -141,6 +169,7 @@ li {
     to { bottom: 0; opacity: 0; }
 }
 
+/* Additional styles for the thank you page */
 .thank-you-message {
     font-size: 1.5em;
     color: #28a745;

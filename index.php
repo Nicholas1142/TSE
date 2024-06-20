@@ -1,26 +1,7 @@
 <?php
 include "connect.php";
-
-$success = false;
-$error = false;
-
-if ($_SERVER["REQUEST_METHOD"] == "POST") {
-    $title = $_POST['comp_title'];
-    $description = $_POST['description'];
-
-    $sql = "INSERT INTO comp (comp_title, comp_details) VALUES ('$title', '$description')";
-
-    if ($connect->query($sql) === TRUE) {
-        $success = true;
-        header('Location: thankyou.php');
-        exit();
-    } else {
-        $error = true;
-    }
-}
-
-$connect->close();
 ?>
+
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -34,7 +15,7 @@ $connect->close();
     <header class="header-bar">
         <div class="header-left">Complaint System</div>
         <div class="header-right">
-            <a href="#" id="notifications"><i class="fas fa-bell"></i></a>
+            <a href="notifications.php" id="notifications"><i class="fas fa-bell"></i></a>
             <a href="#" id="logout">Logout</a>
         </div>
     </header>
@@ -44,10 +25,10 @@ $connect->close();
         </header>
         <main>
             <h2>Register a Complaint</h2>
-            <form id="complaintForm" method="post" action="">
+            <form id="complaintForm" method="post" action="submit_complaint.php">
                 <div class="form-group">
-                    <label for="comp_title">Title</label>
-                    <input type="text" id="comp_title" name="comp_title" required>
+                    <label for="title">Title</label>
+                    <input type="text" id="title" name="title" required>
                 </div>
                 <div class="form-group">
                     <label for="description">Description</label>
@@ -55,9 +36,6 @@ $connect->close();
                 </div>
                 <button type="submit">Submit Complaint</button>
             </form>
-            <?php if ($error): ?>
-                <div class="toast error show">Failed to submit complaint.</div>
-            <?php endif; ?>
         </main>
     </div>
     <script>
@@ -72,6 +50,18 @@ $connect->close();
         document.getElementById('notifications').addEventListener('click', function() {
             window.location.href = 'notifications.php';
         });
+
+        function showErrorToast(message) {
+            const toast = document.createElement('div');
+            toast.className = 'toast error';
+            toast.innerText = message;
+            document.body.appendChild(toast);
+            toast.classList.add('show');
+            setTimeout(() => {
+                toast.classList.remove('show');
+                document.body.removeChild(toast);
+            }, 3000);
+        }
     </script>
 </body>
 </html>
