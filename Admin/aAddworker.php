@@ -23,7 +23,7 @@ $new_id = $row['wid']+1;
 <body>
     <div class="header">
         <h1 class="admin-title">Add New Worker</h1>
-        <a href="" class="logout-btn">Logout</a>
+        <a href="alogout.php" class="logout-btn">Logout</a>
     </div>
 
     <div class="container-Complain">

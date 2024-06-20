@@ -1,3 +1,6 @@
+<?php   session_start();
+?>
+
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -10,7 +13,7 @@
     <div class="header">
         <h1 class="admin-title">Admin</h1>
 
-        <a href="" class="logout-btn">Logout</a>
+        <a href="alogout.php" class="logout-btn">Logout</a>
     </div>
     <div class="success-message">
         <h2>Submit Successful!</h2>

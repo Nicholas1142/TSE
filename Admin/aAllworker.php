@@ -1,6 +1,16 @@
 <?php
 // Database connection
 include("../connect.php");
+session_start();
+
+$adminID = $_SESSION['admin_id'];
+$sql = "SELECT * FROM admin WHERE admin_id = '$adminID'";
+$result = mysqli_query($connect, $sql);
+if (!isset($_SESSION['admin_id'])) {
+  // Redirect to the login page or handle the unauthorized access
+  header("Location: adminlogin.php");
+  exit();
+}
 
 $result = mysqli_query($connect, "select * from worker");
 ?>
@@ -26,7 +36,7 @@ $result = mysqli_query($connect, "select * from worker");
 <body>
     <div class="header">
         <h1 class="admin-title">Worker Management</h1>
-        <a href="" class="logout-btn">Logout</a>
+        <a href="alogout.php" class="logout-btn">Logout</a>
     </div>
 
     <div class="list-complain">

@@ -1,12 +1,8 @@
 <?php
 // Database connection
 include("../connect.php");
+session_start();
 
-// Fetch data from database
-/*
-$sql = "SELECT comp_id, uid, email, comp_title, comp_status, assign_to FROM comp";
-$result = $connect->query($sql);
-*/
 $result = mysqli_query($connect, "select * from comp");
 ?>
 
@@ -21,7 +17,7 @@ $result = mysqli_query($connect, "select * from comp");
 <body>
     <div class="header">
         <h1 class="admin-title">Admin Dashboard</h1>
-        <a href="" class="logout-btn">Logout</a>
+        <a href="alogout.php" class="logout-btn">Logout</a>
     </div>
 
     <div class="list-complain">
