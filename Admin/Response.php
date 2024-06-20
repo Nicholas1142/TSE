@@ -53,7 +53,7 @@ $row = mysqli_fetch_assoc($result);
 
                 <div>
                     <h5>Response:</h5>
-                    <textarea id="description" name="description" cols="60" rows="10" required></textarea>
+                    <textarea id="description" name="description" cols="60" rows="10" required maxlength="3500"></textarea>
                     
                 <!--Assign to-->
                 
