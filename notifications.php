@@ -1,7 +1,7 @@
 <?php
 include "connect.php";
 
-$sql = "SELECT comp_id, comp_title, comp_details, comp_status FROM comp";
+$sql = "SELECT comp_id, comp_title, comp_details, comp_status, areply FROM comp";
 $result = $connect->query($sql);
 ?>
 
@@ -33,6 +33,7 @@ $result = $connect->query($sql);
                         <th>Title</th>
                         <th>Details</th>
                         <th>Status</th>
+                        <th>Reply</th>
                     </tr>
                 </thead>
                 <tbody>
@@ -50,10 +51,11 @@ $result = $connect->query($sql);
                                 echo "<span class='badge bg-label-info me-1'>Unread</span>";
                             }
                             echo "</td>";
+                            echo "<td>" . $row["areply"] . "</td>";
                             echo "</tr>";
                         }
                     } else {
-                        echo "<tr><td colspan='4'>No results</td></tr>";
+                        echo "<tr><td colspan='5'>No results</td></tr>";
                     }
                     $connect->close();
                     ?>
