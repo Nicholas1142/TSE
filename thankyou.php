@@ -5,7 +5,15 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Thank You</title>
     <link rel="stylesheet" href="style.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css">
 </head>
+<header class="header-bar">
+        <div class="header-left">Complaint System</div>
+        <div class="header-right">
+        <a href="notifications.php" id="notifications"><i class="fas fa-bell"></i></a>
+        <a href="logout.php" id="logout">Logout</a>
+        </div>
+    </header>
 <body>
     <div class="container">
         <header>
@@ -17,7 +25,7 @@
         </main>
     </div>
     <script>
-        let countdown = 5;
+        let countdown = 3;
         const countdownElement = document.getElementById('countdown');
 
         const interval = setInterval(() => {

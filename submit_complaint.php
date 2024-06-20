@@ -30,6 +30,12 @@
         echo "Error: " . $stmt->error;
     }
 
+    $last_row = mysqli_query($connect, "select * from comp order by comp_id desc limit 1");
+    if(mysqli_num_rows($last_row)!=0)
+    $row = mysqli_fetch_assoc($last_row);
+
+    $new_id = $row['wid']+1;
+
     $stmt->close();
     $connect->close();
 ?>

@@ -76,7 +76,7 @@ $result = $stmt->get_result();
                             if($row['comp_status'] == "1") {
                                 echo "<span class='badge bg-label-success me-1'>Close case</span>";
                             } elseif($row['comp_status'] == "0") {
-                                echo "<span class='badge bg-label-info me-1'>Unread</span>";
+                                echo "<span class='badge bg-label-info me-1'>Submitted</span>";
                             }
                             echo "</td>";
                             echo "<td>" . $row["replymsg"] . "</td>";
