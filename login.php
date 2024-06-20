@@ -18,7 +18,8 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
         // Verify password
         if (password_verify($password, $user['password'])) {
             // Successful login
-            $_SESSION['id'] = $user['id']; // Corrected from $row['id'] to $user['id']
+            $_SESSION['id'] = $user['id'];
+            $_SESSION['uemail'] = $user['uemail']; // Store email in session
             echo "<script>
                     alert('Login successful!');
                     window.location.href = 'index.php';

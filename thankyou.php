@@ -21,7 +21,8 @@
         </header>
         <main>
             <p class="thank-you-message">Your complaint has been submitted successfully.</p>
-            <p>You will be redirected to the home page in <span id="countdown">5</span> seconds.</p>
+            <p>You will be redirected to the home page in <span id="countdown">3</span> seconds.</p>
+            <a href="notifications.php" id="notifications">Go Back to Home</a>
         </main>
     </div>
     <script>
