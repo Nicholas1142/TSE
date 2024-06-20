@@ -1,7 +1,15 @@
 <?php
+session_start();
 include "connect.php";
-?>
 
+if (!isset($_SESSION['id'])) {
+    echo "<script>
+            alert('Please login first');
+            window.location.href = 'login.php';
+          </script>";
+    exit();
+}
+?>
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -16,7 +24,7 @@ include "connect.php";
         <div class="header-left">Complaint System</div>
         <div class="header-right">
             <a href="notifications.php" id="notifications"><i class="fas fa-bell"></i></a>
-            <a href="#" id="logout">Logout</a>
+            <a href="logout.php" id="logout">Logout</a>
         </div>
     </header>
     <div class="container">
@@ -43,7 +51,7 @@ include "connect.php";
             event.preventDefault();
             if (confirm('Do you want to log out?')) {
                 alert('Logged out successfully.');
-                // Here you can add the actual logout logic.
+                window.location.href = 'login.php';
             }
         });
 

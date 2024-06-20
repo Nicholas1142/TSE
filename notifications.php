@@ -1,8 +1,35 @@
 <?php
+session_start();
 include "connect.php";
 
-$sql = "SELECT comp_id, comp_title, comp_details, comp_status, areply FROM comp";
-$result = $connect->query($sql);
+if (!isset($_SESSION['id'])) {
+    echo "<script>
+            alert('Please login first');
+            window.location.href = 'login.php';
+          </script>";
+    exit();
+}
+
+$id = $_SESSION['id'];
+$sql = "SELECT * FROM users WHERE id = ?";
+$stmt = $connect->prepare($sql);
+$stmt->bind_param("i", $id);
+$stmt->execute();
+$result = $stmt->get_result();
+
+if ($result->num_rows == 0) {
+    echo "<script>
+            alert('User not found');
+            window.location.href = 'login.php';
+          </script>";
+    exit();
+}
+
+$sql = "SELECT comp_id, comp_title, comp_details, comp_status, replymsg FROM comp WHERE uid = ?";
+$stmt = $connect->prepare($sql);
+$stmt->bind_param("i", $id);
+$stmt->execute();
+$result = $stmt->get_result();
 ?>
 
 <!DOCTYPE html>
@@ -18,7 +45,8 @@ $result = $connect->query($sql);
     <header class="header-bar">
         <div class="header-left">Complaint System</div>
         <div class="header-right">
-            <a href="index.php">Home</a>
+            <a href="index.php">Add New</a>
+            <a href="logout.php" id="logout">Logout</a>
         </div>
     </header>
     <div class="container">
@@ -51,7 +79,7 @@ $result = $connect->query($sql);
                                 echo "<span class='badge bg-label-info me-1'>Unread</span>";
                             }
                             echo "</td>";
-                            echo "<td>" . $row["areply"] . "</td>";
+                            echo "<td>" . $row["replymsg"] . "</td>";
                             echo "</tr>";
                         }
                     } else {
@@ -63,5 +91,18 @@ $result = $connect->query($sql);
             </table>
         </main>
     </div>
+    <script>
+        document.getElementById('logout').addEventListener('click', function(event) {
+            event.preventDefault();
+            if (confirm('Do you want to log out?')) {
+                alert('Logged out successfully.');
+                window.location.href = 'login.php';
+            }
+        });
+
+        document.getElementById('Add New').addEventListener('click', function() {
+            window.location.href = 'index.php';
+        });
+    </script>
 </body>
 </html>
