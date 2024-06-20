@@ -11,13 +11,11 @@
       <h1 class="logo">Admin Dashboard</span></h1>
       <ul>
       <li><a href="admin.php">Home</a></li>
-        <li><a href="#">All worker<i class="fas fa-caret-down"></i></a>
+        <li><a href="#">Worker<i class="fas fa-caret-down"></i></a>
 
             <div class="dropdown-menu">
                 <ul>
-                  <li><a href="#">Pricing</a></li>
-                  <li><a href="#">Portfolio</a></li>
-                  <li><a href="#">FAQ</a></li>
+                  <li><a href="aAllworker.php">Manage Worker</a></li>
                 </ul>
               </div>
         </li>

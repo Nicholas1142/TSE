@@ -48,7 +48,6 @@ $result = mysqli_query($connect, "select * from worker");
      
         <a class='action-btn addWorker' href="aAddworker.php">Add Worker</a>
 
-
         <table class="content-table">
             <thead>
                 <tr>
