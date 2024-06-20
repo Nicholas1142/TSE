@@ -4,7 +4,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Thank You</title>
-    <link rel="stylesheet" href="style.css">
+    <link rel="stylesheet" href="style1.css">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css">
 </head>
 <header class="header-bar">
@@ -19,14 +19,21 @@
         <header>
             <h1>Thank You!</h1>
         </header>
+
         <main>
             <p class="thank-you-message">Your complaint has been submitted successfully.</p>
-            <p>You will be redirected to the home page in <span id="countdown">3</span> seconds.</p>
-            <a href="notifications.php" id="notifications">Go Back to Home</a>
+            <p>You will be redirected to the home page in <span id="countdown">10</span> seconds.</p>
+            
         </main>
+
+        <div class="noti">
+        <a href="notifications.php"  id="notification">Go Back to Home</a>
+        </div>
+      
+
     </div>
     <script>
-        let countdown = 3;
+        let countdown = 10;
         const countdownElement = document.getElementById('countdown');
 
         const interval = setInterval(() => {
