@@ -38,7 +38,7 @@ $new_id = $row['wid']+1;
 
                 <div>
                     <input type="hidden" name="newid" value="<?=$new_id;?>">
-                    <button type="submit" class="action-btn">Submit </button>
+                    <button type="submit" class="action-btn">Add </button>
                     <a href="aAllworker.php"><button type="button" class="btn btn-primary"name="backbtn">Back</button></a>
                 </div>
             </form>
