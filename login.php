@@ -30,10 +30,8 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
 
     $stmt->close();
 }
-
 $connect->close();
 ?>
-
 <!DOCTYPE html>
 <html lang="en">
 <head>
