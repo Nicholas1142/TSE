@@ -1,4 +1,6 @@
 <?php   session_start();
+
+include "../connect.php";
 $adminID = $_SESSION['admin_id'];
 $sql = "SELECT * FROM admin WHERE admin_id = '$adminID'";
 $result = mysqli_query($connect, $sql);
