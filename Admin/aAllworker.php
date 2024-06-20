@@ -34,16 +34,21 @@ $result = mysqli_query($connect, "select * from worker");
     </script>
 </head>
 <body>
-    <div class="header">
-        <h1 class="admin-title">Worker Management</h1>
-        <a href="alogout.php" class="logout-btn">Logout</a>
-    </div>
+   
+<?php include 'nav.php'; ?>
+
+    
 
     <div class="list-complain">
-        <header>
+        <header >
             <h2 class="small title">WORKER LIST</h2>
-            <a class='action-btn' href="aAddworker.php">Add Worker</a>
+           
         </header>
+
+     
+        <a class='action-btn addWorker' href="aAddworker.php">Add Worker</a>
+
+
         <table class="content-table">
             <thead>
                 <tr>

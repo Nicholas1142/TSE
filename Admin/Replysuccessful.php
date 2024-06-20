@@ -18,11 +18,10 @@ if (!isset($_SESSION['admin_id'])) {
     <link rel="stylesheet" href="admin.css">
 </head>
 <body>
-    <div class="header">
-        <h1 class="admin-title">Admin</h1>
 
-        <a href="alogout.php" class="logout-btn">Logout</a>
-    </div>
+<?php include 'nav.php'; ?>
+
+
     <div class="success-message">
         <h2>Submit Successful!</h2>
         <p>Your complaint has been submitted successfully.</p>

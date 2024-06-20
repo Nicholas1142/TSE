@@ -30,35 +30,41 @@ $row = mysqli_fetch_assoc($result);
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css">
 </head>
 <body>
-    <div class="header">
-        <h1 class="admin-title">Admin</h1>
-        <a href="alogout.php" class="logout-btn">Logout</a>
-    </div>
+<?php include 'nav.php'; ?>
 
     <div class="container-Complain">
         <div class="Complain-detail">
-            <form action="aRespondFunc.php?cid=<?=$row['comp_id'];?>" id="complaintForm" method="POST">                
-                <h3>Complain Title: <?= strtoupper($row['comp_title']);?></h3>
+            <form action="aRespondFunc.php?cid=<?=$row['comp_id'];?>" id="complaintForm" method="POST"> 
+                
+            <div class="comp-form">
+            <h3>Complain Title: <?= strtoupper($row['comp_title']);?></h3>
+                <br>
                 <div>
                     <label for="username"><h5>User Name: <?=$row['username']?></h5></label>
                 </div>
-
+<br>
                 <div>
                     <h5>Email: <?=$row['email']?></h5>
                 </div>
-
+                <br>
                 <div>
                     <h5>Complain Details: <?=$row['comp_details']?></h5>
                 </div>
-
-                <div>
-                    <h5>Response:</h5>
-                    <textarea id="description" name="description" cols="60" rows="10" required maxlength="3500"></textarea>
-                    
-                <!--Assign to-->
+                <br>
+                <h5>Response:</h5>
+            </div>
                 
-                <h5>Assign To:</h5>
+              
+                <div>
+                    
+                    <br>
+                    <textarea id="description" name="description" cols="60" rows="10" required maxlength="3500"></textarea>
+                              
+                <!--Assign to-->
+                   
+               
                 <div class="dropdown">
+                <h5>Assign To:</h5>
                 <select name="worker" id="worker">
 
                         <?php 
