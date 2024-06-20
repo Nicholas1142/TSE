@@ -1,6 +1,16 @@
 <?php
 // Database connection
 include("../connect.php");
+session_start();
+
+$adminID = $_SESSION['admin_id'];
+$sql = "SELECT * FROM admin WHERE admin_id = '$adminID'";
+$result = mysqli_query($connect, $sql);
+if (!isset($_SESSION['admin_id'])) {
+  // Redirect to the login page or handle the unauthorized access
+  header("Location: adminlogin.php");
+  exit();
+}
 
 $result = mysqli_query($connect, "select * from worker");
 ?>
@@ -26,12 +36,13 @@ $result = mysqli_query($connect, "select * from worker");
 <body>
     <div class="header">
         <h1 class="admin-title">Worker Management</h1>
-        <a href="" class="logout-btn">Logout</a>
+        <a href="alogout.php" class="logout-btn">Logout</a>
     </div>
 
     <div class="list-complain">
         <header>
             <h2 class="small title">WORKER LIST</h2>
+            <a class='action-btn' href="aAddworker.php">Add Worker</a>
         </header>
         <table class="content-table">
             <thead>
@@ -50,9 +61,7 @@ $result = mysqli_query($connect, "select * from worker");
                         <tr>
                             <td><?= $row['wid'] ?></td>
                             <td><?= ucfirst($row['worker_position']) ?></td>
-                            <td><a class='action-btn' href="aEditworker.php?wid=<?php echo $row['wid'];?>">Edit</a>
-                            <a class='action-btn' href="aEditworker.php?wid=<?php echo $row['wid'];?>" onclick="return confirmation();">Delete</a></td>
-
+                            <td><a class='action-btn' href="aDelworker.php?wid=<?php echo $row['wid'];?>" onclick="return confirmation();">Delete</a></td>
                         </tr>
             </tbody>
             <?php

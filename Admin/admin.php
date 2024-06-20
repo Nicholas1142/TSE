@@ -1,12 +1,17 @@
 <?php
 // Database connection
 include("../connect.php");
+session_start();
 
-// Fetch data from database
-/*
-$sql = "SELECT comp_id, uid, email, comp_title, comp_status, assign_to FROM comp";
-$result = $connect->query($sql);
-*/
+$adminID = $_SESSION['admin_id'];
+$sql = "SELECT * FROM admin WHERE admin_id = '$adminID'";
+$result = mysqli_query($connect, $sql);
+if (!isset($_SESSION['admin_id'])) {
+  // Redirect to the login page or handle the unauthorized access
+  header("Location: adminlogin.php");
+  exit();
+}
+
 $result = mysqli_query($connect, "select * from comp");
 ?>
 
@@ -21,7 +26,7 @@ $result = mysqli_query($connect, "select * from comp");
 <body>
     <div class="header">
         <h1 class="admin-title">Admin Dashboard</h1>
-        <a href="" class="logout-btn">Logout</a>
+        <a href="alogout.php" class="logout-btn">Logout</a>
     </div>
 
     <div class="list-complain">
@@ -56,6 +61,8 @@ $result = mysqli_query($connect, "select * from comp");
                             <span class="badge bg-label-success me-1">Replied</span>
                             <?php elseif($row['comp_status'] == "0"):?>
                             <span class="badge bg-label-info me-1">Unread</span>
+                            <?php else:?>
+                            -
                             <?php endif;?></td>
                             
                             <?php

@@ -3,6 +3,15 @@
 include("../connect.php");
 session_start();
 
+$adminID = $_SESSION['admin_id'];
+$sql = "SELECT * FROM admin WHERE admin_id = '$adminID'";
+$result = mysqli_query($connect, $sql);
+if (!isset($_SESSION['admin_id'])) {
+  // Redirect to the login page or handle the unauthorized access
+  header("Location: adminlogin.php");
+  exit();
+}
+
 $result = mysqli_query($connect, "select * from comp 
 join users on comp.uid = users.id
 where comp_id = '".$_GET['cid']."' ");
@@ -23,7 +32,7 @@ $row = mysqli_fetch_assoc($result);
 <body>
     <div class="header">
         <h1 class="admin-title">Admin</h1>
-        <a href="" class="logout-btn">Logout</a>
+        <a href="alogout.php" class="logout-btn">Logout</a>
     </div>
 
     <div class="container-Complain">
@@ -44,7 +53,7 @@ $row = mysqli_fetch_assoc($result);
 
                 <div>
                     <h5>Response:</h5>
-                    <textarea id="description" name="description" cols="60" rows="10" required></textarea>
+                    <textarea id="description" name="description" cols="60" rows="10" required maxlength="3500"></textarea>
                     
                 <!--Assign to-->
                 
