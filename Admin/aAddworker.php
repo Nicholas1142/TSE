@@ -3,6 +3,15 @@
 include("../connect.php");
 session_start();
 
+$adminID = $_SESSION['admin_id'];
+$sql = "SELECT * FROM admin WHERE admin_id = '$adminID'";
+$result = mysqli_query($connect, $sql);
+if (!isset($_SESSION['admin_id'])) {
+  // Redirect to the login page or handle the unauthorized access
+  header("Location: adminlogin.php");
+  exit();
+}
+
 $last_row = mysqli_query($connect, "select * from worker order by wid desc limit 1");
 if(mysqli_num_rows($last_row)!=0)
 $row = mysqli_fetch_assoc($last_row);

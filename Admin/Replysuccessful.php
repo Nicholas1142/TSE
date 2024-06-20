@@ -1,4 +1,12 @@
 <?php   session_start();
+$adminID = $_SESSION['admin_id'];
+$sql = "SELECT * FROM admin WHERE admin_id = '$adminID'";
+$result = mysqli_query($connect, $sql);
+if (!isset($_SESSION['admin_id'])) {
+  // Redirect to the login page or handle the unauthorized access
+  header("Location: adminlogin.php");
+  exit();
+}
 ?>
 
 <!DOCTYPE html>
