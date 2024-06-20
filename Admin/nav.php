@@ -16,8 +16,7 @@
             <div class="dropdown-menu">
                 <ul>
                   <li><a href="#">Pricing</a></li>
-                  <li><a href="#">Portfolio</a></li>
-                  <li><a href="#">FAQ</a></li>
+                 
                 </ul>
               </div>
         </li>
