@@ -15,8 +15,7 @@
 
             <div class="dropdown-menu">
                 <ul>
-                  <li><a href="#">Pricing</a></li>
-                 
+                  <li><a href="aAllworker.php">Manage Worker</a></li>
                 </ul>
               </div>
         </li>
