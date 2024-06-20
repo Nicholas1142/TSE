@@ -74,8 +74,8 @@ $result = mysqli_query($connect, "select * from comp");
                             <?php
                             while($row2 = mysqli_fetch_assoc($result2)){
                                 if(!empty($row['assign_to']))
-                                    {echo ucfirst($row2['worker_position']);} 
-                                else {echo "-";}
+                                    {echo ucfirst($row2['worker_position']);}
+                                else {?> - <?php }
                                 } ?>
                             </td>
                           
