@@ -30,20 +30,25 @@ $new_id = $row['wid']+1;
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css">
 </head>
 <body>
-    <div class="header">
-        <h1 class="admin-title">Add New Worker</h1>
-        <a href="alogout.php" class="logout-btn">Logout</a>
-    </div>
+ 
+
+<?php include 'nav.php'; ?>
 
     <div class="container-Complain">
         <div class="Complain-detail">
-            <form action="aAddworkerFunc.php" id="complaintForm" method="POST">                
-                <h3>Worker ID: <?=$new_id?></h3>
+            <form action="aAddworkerFunc.php" id="complaintForm" method="POST">   
+                
+            <div class="comp-form">
 
-                <div>
-                    <label for="position"><h5>Position:</h5></label><br>
+            <h3>Worker ID: <?=$new_id?></h3>
+<br>
+                <div class="position">
+                    <label for="position"><h5>Position:</h5></label>
                     <input type="text" id="position" name="position"><br>
                 </div>
+            
+            </div>
+                
 
                 <div>
                     <input type="hidden" name="newid" value="<?=$new_id;?>">

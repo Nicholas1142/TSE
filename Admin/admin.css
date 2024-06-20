@@ -28,50 +28,34 @@ h2,h3,h4,h5,h6{
     margin-left: 18px;
 }
 
-.admin-title{
-
-    padding: 0px 40px ;
-    font-size: 24px;
-    
-    
-
-}
-
-.header{
-display: flex;
-background-color: #007bff;
-padding:20px;
-margin:0 ;
 
 
-
-
-}
-
-.header .logout-btn{
-
-    padding: 20px 0px 0px 0px;
-    background-color: #007bff;
-    color: white;
+li{
+    list-style: none;
+    display: inline-block;
     text-decoration: none;
-    border-radius: 5px;
-    transition: background-color 0.3s ease;
-
-    margin:0% 0% 0% 70% ;
-   
-    background-color: #007bff;
-    color: white;
-    border: none;
-    border-radius: 5px;
-    cursor: pointer;
-    transition: background-color 0.3s ease;
-
- 
 }
+
+
+
+
+li a{
+    color: white;
+    font-size: 18px;
+    font-weight: bold;
+    margin-right: 25px;
+    text-decoration: none;
+}
+   
+
+
+
+
 
 
 
 .list-complain{
+    margin-top: 30px;
     padding: 0px 0px 0px 50px;
     text-align: center;
 }
@@ -80,27 +64,31 @@ margin:0 ;
     width: 50%; 
     margin: 0 auto; 
     border-collapse: collapse;
-    border-bottom: 1px solid #dddddd;
+   
     font-size: 0.9em;
     min-width: 400px;
     color: black;
 }
 
+.content-table tbody tr{
 
+    border-bottom: 1px solid #dddddd;
+
+}
 .content-table  thead tr{
 
     background-color: #007bff;
     color: white;
     text-align: center;
     font-weight: bold;
-
+    margin: 20px;
   
 
 }
 
 .content-table tr,
 .content-table td{
-    padding: 12px 50px;
+    padding: 20px 50px;
 
 
 }
@@ -115,27 +103,35 @@ margin:0 ;
 
 
 
+
+
 .container-Complain {
-    border: 2px solid  #dddddd; 
+    border: 2px solid #dddddd; 
     padding: 20px; 
-    margin: 50px 700px 20px 400px; 
+    margin: 50px auto; 
+    max-width: 600px; 
     border-radius: 10px; 
     background-color: #f9f9f9; 
     box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
 }
 
-.complain-detail{
-   display: flex;
-   margin: 50px;
+.Complain-detail{
+    display: flex;
+    
+    align-items: center;
+    margin: 20px 20px;
 }
-
-.complain-detail form {
+.Complain-detail form {
     display: flex;
     flex-direction: column;
-    align-items: center;
-    
+    width: 100%;
+    max-width: 600px;
+    padding: 0px;
+    box-sizing: border-box;
 }
-
+.comp-form{
+margin-left:-3% ;
+}
 
 
 
@@ -159,7 +155,7 @@ margin:0 ;
 }
 
 .dropdown {
-    margin: 20px 10px;
+    margin: 20px -10px;
     display: flex;
     align-items: center;
 }
@@ -170,7 +166,8 @@ margin:0 ;
 }
 
 .dropdown select {
-    padding: 10px;
+    margin-left: 10px;
+    padding: 5px;
     border: 2px solid #e7e7e7;
     border-radius: 5px;
 }
@@ -244,4 +241,44 @@ margin:0 ;
     color:#099d2b;
     font-weight: bold;
 
+}
+
+
+
+
+
+
+.list-complain header {
+    
+    display: inline-block;
+    align-items: center;
+    padding: 10px;
+    border-bottom: 1px solid #ddd;
+}
+
+.list-complain .title {
+    margin-bottom: 20px;
+    font-size: 1.5em;
+}
+
+.addWorker {
+    background-color: #007bff;
+    color: white;
+    padding: 10px 20px;
+    text-decoration: none;
+    border-radius: 5px;
+    position: absolute;
+    margin-left: 10%;
+    
+}
+
+.position input {
+    width: 100%;
+    padding: 10px;
+    border: 1px solid #ddd;
+    border-radius: 5px;
+    margin-top: 5px;
+    margin-left: 15px;
+    margin-bottom: 20px;
+    box-sizing: border-box;
 }

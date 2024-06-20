@@ -24,10 +24,12 @@ $result = mysqli_query($connect, "select * from comp");
     <link rel="stylesheet" href="admin.css">
 </head>
 <body>
-    <div class="header">
-        <h1 class="admin-title">Admin Dashboard</h1>
-        <a href="alogout.php" class="logout-btn">Logout</a>
-    </div>
+   
+
+<?php include 'nav.php'; ?>
+
+
+
 
     <div class="list-complain">
         <header>
