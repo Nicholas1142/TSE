@@ -1,20 +1,35 @@
 <?php
-include "connect.php";
+    session_start();
+    include "connect.php";
 
+    if (!isset($_SESSION['id'])) {
+        echo "<script>
+                alert('Please login first');
+                window.location.href = 'login.php';
+            </script>";
+        exit();
+    }
 
-$title = $_POST['title'];
-$description = $_POST['description'];
+    $id = $_SESSION['id'];
 
-$sql = "INSERT INTO comp (comp_title, comp_details) VALUES ('$title', '$description')";
+    $title = $_POST['title'];
+    $description = $_POST['description'];
 
+    // Prepare SQL statement to prevent SQL injection
+    $sql = "INSERT INTO comp (uid, comp_title, comp_details) VALUES (?, ?, ?)";
+    $stmt = $connect->prepare($sql);
+    $stmt->bind_param("iss", $id, $title, $description);
 
-if ($connect->query($sql) === TRUE) {
-    echo json_encode(array('success' => true));
-    header('Location: thankyou.php');
-} else {
-    echo json_encode(array('success' => false));
-    echo "Error: " . $sql . "<br>" . $connect->error;
-}
+    if ($stmt->execute()) {
+        echo "<script>
+                alert('Complaint submitted successfully!');
+                window.location.href = 'thankyou.php';
+            </script>";
+    } else {
+        echo json_encode(array('success' => false));
+        echo "Error: " . $stmt->error;
+    }
 
-$connect->close();
+    $stmt->close();
+    $connect->close();
 ?>

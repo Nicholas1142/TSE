@@ -4,12 +4,12 @@ include "connect.php";
 
 if ($_SERVER['REQUEST_METHOD'] == 'POST') {
     $username = $_POST['username'];
-    $email = $_POST['email'];
+    $uemail = $_POST['uemail'];
     $password = password_hash($_POST['password'], PASSWORD_DEFAULT);
 
     // Prepare SQL statement to prevent SQL injection
-    $stmt = $connect->prepare("INSERT INTO users (username, email, password) VALUES (?, ?, ?)");
-    $stmt->bind_param("sss", $username, $email, $password);
+    $stmt = $connect->prepare("INSERT INTO users (username, uemail, password) VALUES (?, ?, ?)");
+    $stmt->bind_param("sss", $username, $uemail, $password);
 
     if ($stmt->execute()) {
         echo "<script>
@@ -54,7 +54,7 @@ $connect->close();
             <span class="input-item">
               <i class="fa fa-user-circle"></i>
             </span>
-            <input class="form-input" id="usemail" type="text" placeholder="@Email" name="email" required>
+            <input class="form-input" id="usemail" type="text" placeholder="@Email" name="uemail" required>
             <br>
             
             <span class="input-item">
