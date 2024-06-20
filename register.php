@@ -76,6 +76,9 @@ $connect->close();
             <button class="register" style = "width : 50%; margin-left : 25%; border-radius: 7px 20px 7px 20px;" type="submit"> Register </button>
           </div>
         </div>
+        <div class="other">
+          <a class="btn submits frgt-pass" href="login.php"> User Loginㅤ</a>
+        </div>
       </form>
     </div>
   </main>
