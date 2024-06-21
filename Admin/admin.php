@@ -55,7 +55,16 @@ $result = mysqli_query($connect, "select * from comp");
             <tbody>
                         <tr>
                             <td><?= $row['comp_id'] ?></td>
-                            <td><?= $row['uid'] ?></td>
+
+                            <?php
+                            $sql2 = mysqli_query($connect, "select * from users where id = '".$row['uid']."'");
+                            while($row2 = mysqli_fetch_assoc($sql2)){
+                                if(!empty($row['uid'])){?>
+                                    <td><?= $row2['username'] ?></td>
+                            <?php }
+                            }
+                            ?>
+
                             <td><?php if(!empty($row['email'])) {echo $row['email'];} 
                                 else {echo "-";}?></td>
                             <td><?= $row['comp_title'] ?></td>
@@ -72,9 +81,9 @@ $result = mysqli_query($connect, "select * from comp");
 ?>
                             <td>
                             <?php
-                            while($row2 = mysqli_fetch_assoc($result2)){
+                            while($row3 = mysqli_fetch_assoc($result2)){
                                 if(!empty($row['assign_to']))
-                                    {echo ucfirst($row2['worker_position']);}
+                                    {echo ucfirst($row3['worker_position']);}
                                 else {?> - <?php }
                                 } ?>
                             </td>
