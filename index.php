@@ -43,6 +43,7 @@ if (!isset($_SESSION['id'])) {
                     <label for="description">Description</label>
                     <textarea id="description" name="description" rows="4" required></textarea>
                 </div>
+                <input type="hidden" name="newid" value="<?=$new_id;?>">
                 <button type="submit">Submit Complaint</button>
             </form>
         </main>

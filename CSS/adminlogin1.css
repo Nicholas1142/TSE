@@ -7,7 +7,7 @@
 }
 
  body {
-	background-image: linear-gradient(to top, #d8eda8 0%, #d7d6fe 100%); 	
+    background-image: linear-gradient(to top, #d8eda8 0%, #d7d6fe 100%);
 	 background-attachment: fixed;
 	 background-repeat: no-repeat;
 	 font-family: 'Vibur', cursive;
@@ -57,6 +57,7 @@
  .input-item {
 	 background: #fff;
 	 color: #333;
+     margin-left: 30px;
 	 padding: 14.5px 20px 15px 9px;
 	 border-radius: 5px 0px 0px 5px;
 }

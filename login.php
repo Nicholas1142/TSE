@@ -18,7 +18,8 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
         // Verify password
         if (password_verify($password, $user['password'])) {
             // Successful login
-            $_SESSION['id'] = $user['id']; // Corrected from $row['id'] to $user['id']
+            $_SESSION['id'] = $user['id'];
+            $_SESSION['uemail'] = $user['uemail']; // Store email in session
             echo "<script>
                     alert('Login successful!');
                     window.location.href = 'index.php';
@@ -74,7 +75,7 @@ $connect->close();
             <button class="log-in" style="width: 50%; margin-left: 25%; border-radius: 7px 20px 7px 20px;" type="submit"> Log In </button>
           </div>
           <div class="other">
-            <a class="btn submits frgt-pass" href="adminlogin.php"> Admin Loginㅤ</a>
+            <a class="btn submits frgt-pass" href="Admin/adminlogin.php"> Admin Loginㅤ</a>
           </div>
           <div class="other">
             <a class="btn submits frgt-pass" href="register.php"> Sign Upㅤ</a>
