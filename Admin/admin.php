@@ -39,7 +39,7 @@ $result = mysqli_query($connect, "select * from comp");
             <thead>
                 <tr>
                     <th>ID</th>
-                    <th>UserID</th>
+                    <th>Username</th>
                     <th>Email</th>
                     <th>Complain title</th>
                     <th>Status</th>
