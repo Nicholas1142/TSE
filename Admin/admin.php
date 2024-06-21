@@ -88,11 +88,13 @@ $result = mysqli_query($connect, "select * from comp");
                         </td>
 
                         <td>
-                            <a class='action-btn' href="Response.php?cid=<?php echo $row['comp_id']; ?>">Response</a>
-                            <br>
-                            <br>
-                            <br>
-                            <a class='action-btn View' href="Responddetails.php?cid=<?= $row['comp_id']; ?>">View</a>
+                        <div class="action-btn-container">
+                        <a class='action-btn' href="Response.php?cid=<?php echo $row['comp_id']; ?>">Response</a>
+                        
+                        <a class='action-btn' href="Responddetails.php?cid=<?= $row['comp_id']; ?>">View</a>
+
+                        </div>
+
                         </td>
                     </tr>
                 </tbody>
