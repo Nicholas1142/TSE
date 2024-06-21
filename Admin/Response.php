@@ -106,12 +106,20 @@ $row = mysqli_fetch_assoc($result);
 
                 <div>
                     <input type="hidden" name="cid" value="<?=$row['comp_id'];?>">
-                    <button type="submit" class="action-btn">Submit </button>
+                    <button type="submit" class="action-btn" id="submit-btn">Submit </button>
                     <a href="admin.php"><button type="button" class="btn btn-primary"name="backbtn">Back</button></a>
                 </div>
             </form>
         </div>
     </div>
 
+    <script>
+        document.getElementById('submit-btn').addEventListener('click', function(event) {
+            var confirmation = confirm("Are you sure you want to submit?");
+            if (!confirmation) {
+                event.preventDefault();
+            }
+            });
+    </script>
 </body>
 </html>

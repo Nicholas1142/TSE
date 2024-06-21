@@ -44,7 +44,7 @@ if (!isset($_SESSION['id'])) {
                     <textarea id="description" name="description" rows="4" required></textarea>
                 </div>
                 <input type="hidden" name="newid" value="<?=$new_id;?>">
-                <button type="submit">Submit Complaint</button>
+                <button type="submit" id="submit-btn">Submit Complaint</button>
             </form>
         </main>
     </div>
@@ -60,6 +60,13 @@ if (!isset($_SESSION['id'])) {
         document.getElementById('notifications').addEventListener('click', function() {
             window.location.href = 'notifications.php';
         });
+
+        document.getElementById('submit-btn').addEventListener('click', function(event) {
+            var confirmation = confirm("Are you sure you want to submit?");
+            if (!confirmation) {
+                event.preventDefault();
+            }
+            });
 
         function showErrorToast(message) {
             const toast = document.createElement('div');

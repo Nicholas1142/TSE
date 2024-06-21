@@ -16,16 +16,19 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
   if ($result->num_rows > 0) {
     $user = $result->fetch_assoc();
     // Verify password
-    if ($pass = $user['pass']) {
-        // Successful login
-        $_SESSION['admin_id'] = $user['admin_id'];
-        $_SESSION['admin_name'] = $user['admin_name'];
-        header("Location: admin.php"); // Redirect to a welcome page
-        exit();
-    } else {
-        // Invalid username or password, show a pop-up alert
-        echo "<script>alert('Invalid password!');</script>";
-      }
+    if ($pass == $user['pass']) {
+      // Successful login
+      $_SESSION['admin_id'] = $user['admin_id'];
+      $_SESSION['admin_name'] = $user['admin_name'];
+      echo "<script>
+              alert('Login successful!');
+              window.location.href = 'admin.php';
+            </script>";
+      exit();
+  } else {
+      // Invalid password, show a pop-up alert
+      echo "<script>alert('Invalid password!');</script>";
+  }
 }  else {
           // Invalid username or password, show a pop-up alert
           echo "<script>alert('Invalid Admin name!');</script>";

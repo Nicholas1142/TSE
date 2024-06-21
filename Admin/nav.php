@@ -20,10 +20,17 @@
               </div>
         </li>
        
-        <li><a href="alogout.php">Logout</a></li>
+        <li><a href="alogout.php" id="logout-link">Logout</a></li>
       </ul>
     </div>
-
+    <script>
+    document.getElementById('logout-link').addEventListener('click', function(event) {
+      var confirmation = confirm("Are you sure you want to log out?");
+      if (!confirmation) {
+        event.preventDefault();
+      }
+    });
+  </script>
     
   </body>
 </html>
