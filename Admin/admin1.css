@@ -142,9 +142,12 @@ margin-left:-3% ;
     cursor: pointer;
     text-decoration: none;
     transition: background-color 0.3s ease;
+   
 }
 
-
+.action-btn a{
+   
+}
 
 .action-btn:hover {
     background-color: #0056b3;
