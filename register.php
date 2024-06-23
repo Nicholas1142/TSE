@@ -19,12 +19,6 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
     } else {
         echo "Error: " . $stmt->error;
     }
-
-    $last_row = mysqli_query($connect, "select * from worker order by wid desc limit 1");
-    if(mysqli_num_rows($last_row)!=0)
-    $row = mysqli_fetch_assoc($last_row);
-
-    $new_id = $row['wid']+1;
     
     $stmt->close();
 }
@@ -106,19 +100,5 @@ $connect->close();
     }, false);
   </script>
 </body>
-<!-- <body>
-
-<div class="register-container">
-    <form method="POST">
-        <header class="head-form">
-            <h2>Register</h2>
-        </header>
-        <input type="email" name="email" placeholder="Email" required>
-        <input type="password" name="password" placeholder="Password" required>
-        <input type="submit" value="Register">
-    </form>
-</div>
-
-</body> -->
 
 </html>

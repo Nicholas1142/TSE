@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: Jun 19, 2024 at 05:44 PM
+-- Generation Time: Jun 23, 2024 at 08:46 AM
 -- Server version: 10.4.27-MariaDB
 -- PHP Version: 8.2.0
 
@@ -54,8 +54,9 @@ CREATE TABLE `comp` (
   `comp_id` int(16) NOT NULL,
   `uid` int(11) NOT NULL,
   `email` varchar(255) NOT NULL,
-  `comp_title` varchar(50) NOT NULL,
+  `comp_title` varchar(255) NOT NULL,
   `comp_status` int(10) NOT NULL,
+  `replymsg` varchar(4000) NOT NULL,
   `assign_to` varchar(255) NOT NULL,
   `comp_details` varchar(2046) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
@@ -64,9 +65,9 @@ CREATE TABLE `comp` (
 -- Dumping data for table `comp`
 --
 
-INSERT INTO `comp` (`comp_id`, `uid`, `email`, `comp_title`, `comp_status`, `assign_to`, `comp_details`) VALUES
-(1, 19, 'xxx.gmail.com', 'aaron gugu bird too short', 1, '2', 'aaron gugu bird too short\r\ntaddy gugu bird too short\r\n'),
-(3, 20, 'wsy@gxxxx.com', 'adssadad', 1, '2', 'asdad');
+INSERT INTO `comp` (`comp_id`, `uid`, `email`, `comp_title`, `comp_status`, `replymsg`, `assign_to`, `comp_details`) VALUES
+(1, 1, '1211201831@student.mmu.edu.my', 'Defective Wireless Headphones – Request for Replacement', 1, 'Dear TechGuru85,\r\n\r\nWe apologize for the defective XYZ Wireless Headphones. We will send a replacement immediately. If you prefer a refund, please let us know, and we will process it promptly. Thank you for your understanding.\r\n\r\nBest regards,\r\nWSY\r\nCustomer Support Team', '2', 'I recently purchased the XYZ Wireless Headphones, but they are defective. They fail to connect via Bluetooth and produce distorted sound. I request a replacement or a full refund. Please address this issue promptly.'),
+(2, 1, '1211201831@student.mmu.edu.my', 'xxx', 1, 'xxx', '', 'test');
 
 -- --------------------------------------------------------
 
@@ -86,8 +87,8 @@ CREATE TABLE `users` (
 --
 
 INSERT INTO `users` (`id`, `username`, `uemail`, `password`) VALUES
-(19, 'Aaron519', 'jhtan588@gmail.com', '$2y$10$IeHbaaKDss3TWeSvm5OhteUwNe11iaGE1OYxCfClLZe9KhGDncU.6'),
-(20, 'wsy', 'xxx', 'xxx1123');
+(1, 'TechGuru85', '1211201831@student.mmu.edu.my', '$2y$10$t4bPQwIHrG.QoFDSJBA4V.DF1FzXbmeSS242USIRegICJeMiN1nD.'),
+(2, '2B-G5', 'wuhoo0303@gmail.com', '$2y$10$4L9gKPGITcniH5XlT9bQF.cl2py0oYBDijs4iE0rwC/Aa40yxMLBG');
 
 -- --------------------------------------------------------
 
@@ -96,6 +97,7 @@ INSERT INTO `users` (`id`, `username`, `uemail`, `password`) VALUES
 --
 
 CREATE TABLE `worker` (
+  `id` int(11) NOT NULL,
   `wid` int(11) NOT NULL,
   `worker_position` varchar(25) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
@@ -104,9 +106,10 @@ CREATE TABLE `worker` (
 -- Dumping data for table `worker`
 --
 
-INSERT INTO `worker` (`wid`, `worker_position`) VALUES
-(1, 'manager'),
-(2, 'staff');
+INSERT INTO `worker` (`id`, `wid`, `worker_position`) VALUES
+(9, 1, 'manager'),
+(12, 2, 'Assistant'),
+(13, 3, 'Supervisor');
 
 --
 -- Indexes for dumped tables
@@ -135,7 +138,7 @@ ALTER TABLE `users`
 -- Indexes for table `worker`
 --
 ALTER TABLE `worker`
-  ADD PRIMARY KEY (`wid`);
+  ADD PRIMARY KEY (`id`);
 
 --
 -- AUTO_INCREMENT for dumped tables
@@ -151,19 +154,19 @@ ALTER TABLE `admin`
 -- AUTO_INCREMENT for table `comp`
 --
 ALTER TABLE `comp`
-  MODIFY `comp_id` int(16) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=4;
+  MODIFY `comp_id` int(16) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
 
 --
 -- AUTO_INCREMENT for table `users`
 --
 ALTER TABLE `users`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=21;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
 
 --
 -- AUTO_INCREMENT for table `worker`
 --
 ALTER TABLE `worker`
-  MODIFY `wid` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=14;
 COMMIT;
 
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;

@@ -65,7 +65,7 @@ $row = mysqli_fetch_assoc($result);
                
                 <div class="dropdown">
                 <h5>Assign To:</h5>
-                <select name="worker" id="worker">
+                <select name="worker" id="worker" required>
 
                         <?php 
                         $sql = mysqli_query($connect, "select * from comp join worker on worker.wid = comp.assign_to where comp_id = '".$_GET['cid']."' limit 1");
