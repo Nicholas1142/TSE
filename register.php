@@ -1,31 +1,37 @@
 <?php
 include "connect.php";
 
-
 if ($_SERVER['REQUEST_METHOD'] == 'POST') {
     $username = $_POST['username'];
     $uemail = $_POST['uemail'];
     $password = password_hash($_POST['password'], PASSWORD_DEFAULT);
 
-    // Prepare SQL statement to prevent SQL injection
-    $stmt = $connect->prepare("INSERT INTO users (username, uemail, password) VALUES (?, ?, ?)");
-    $stmt->bind_param("sss", $username, $uemail, $password);
+    // Check for duplicate email
+    $stmt = $connect->prepare("SELECT uemail FROM users WHERE uemail = ?");
+    $stmt->bind_param("s", $uemail);
+    $stmt->execute();
+    $stmt->store_result();
 
-    if ($stmt->execute()) {
+    if ($stmt->num_rows > 0) {
         echo "<script>
-                alert('User registered successfully.');
-                window.location.href = 'login.php';
+                alert('Email already exists. Please use a different email.');
+                window.location.href = 'register.php';
               </script>";
     } else {
-        echo "Error: " . $stmt->error;
+        // Prepare SQL statement to prevent SQL injection
+        $stmt = $connect->prepare("INSERT INTO users (username, uemail, password) VALUES (?, ?, ?)");
+        $stmt->bind_param("sss", $username, $uemail, $password);
+
+        if ($stmt->execute()) {
+            echo "<script>
+                    alert('User registered successfully.');
+                    window.location.href = 'login.php';
+                  </script>";
+        } else {
+            echo "Error: " . $stmt->error;
+        }
     }
 
-    $last_row = mysqli_query($connect, "select * from worker order by wid desc limit 1");
-    if(mysqli_num_rows($last_row)!=0)
-    $row = mysqli_fetch_assoc($last_row);
-
-    $new_id = $row['wid']+1;
-    
     $stmt->close();
 }
 
