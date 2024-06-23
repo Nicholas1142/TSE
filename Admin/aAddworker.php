@@ -44,7 +44,7 @@ $new_id = $row['wid']+1;
 <br>
                 <div class="position">
                     <label for="position"><h5>Position:</h5></label>
-                    <input type="text" id="position" name="position"><br>
+                    <input type="text" id="position" name="position" required><br>
                 </div>
             
             </div>
