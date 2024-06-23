@@ -27,11 +27,11 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
             exit();
         } else {
             // Invalid username or password, show a pop-up alert
-            echo "<script>alert('Invalid email or password!');</script>";
+            echo "<script>alert('Invalid password!');</script>";
         }
     } else {
         // No user found, show a pop-up alert
-        echo "<script>alert('Invalid email or password!');</script>";
+        echo "<script>alert('No user found. Please sign up first.');</script>";
     }
 
     $stmt->close();
